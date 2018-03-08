@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-func GenerateKey(t string, l string, f string) {
+func GenerateKey(t string, l string, f string, m string) {
 	var (
 		out bytes.Buffer
 		stderr bytes.Buffer
@@ -16,7 +16,7 @@ func GenerateKey(t string, l string, f string) {
 	sshDir := usr.HomeDir + "/.ssh"
 
 
-	cmd := exec.Command("ssh-keygen", "-t", t, "-b", l, "-f", sshDir + "/" + f)
+	cmd := exec.Command("ssh-keygen", "-t", t, "-b", l, "-f", sshDir + "/" + f, "-C", m)
 	cmd.Stdout = &out
 	cmd.Stderr = &stderr
 
@@ -34,6 +34,5 @@ func GenerateKey(t string, l string, f string) {
 			panic(fmt.Sprint(err) + ":" + stderr.String())
 		}
 	}
-
 	fmt.Println("Create key.")
 }
