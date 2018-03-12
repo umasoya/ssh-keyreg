@@ -13,7 +13,7 @@ func Keygen(opts options.Options) {
 		stdout,stderr bytes.Buffer
 	)
 
-	cmd := exec.Commamnd("ssh-keygen", "-t", "rsa", "-b", "4096", "-f", opts.KeyPath, "-C", opts.Comment)
+	cmd := exec.Command("ssh-keygen", "-t", "rsa", "-b", "4096", "-f", opts.KeyPath, "-C", opts.Comment)
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
 
@@ -32,4 +32,5 @@ func Keygen(opts options.Options) {
 		}
 	}
 	fmt.Println("Generate " + opts.KeyPath + " is successed.")
+	return
 }

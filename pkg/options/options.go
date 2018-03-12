@@ -12,7 +12,7 @@ import (
 type Options struct {
 	Service string `long:"service" short:"s" default:"github" choice:"github" choice:"bitbucket" choice:"gitlab" description:"Select the service to register."`
 	KeyPath string `long:"path" short:"p" default-mask:"~/.ssh/<service>" description:"Path to save ssh key"`
-	Token   string `long:"token" short:"t" default-mask:"Execution file path" description:"Path of toml file that wrote the token."`
+	Token  string `long:"secret" short:"s" default-mask:"Execution file path" description:"Path of toml file that wrote the username & token."`
 	Comment string `short:"C" description:"your_email@example.com"`
 	Config  string `short:"c" long:"conf" default-mask:"~/.ssh/config" description:"Path to ssh config file"`
 	Version func() `short:"v" long:"version" description:"show version"`
@@ -55,7 +55,7 @@ func setTokenPath(opts *Options) {
 		return
 	}
 	exe,_ := os.Executable()
-	opts.Token = filepath.Dir(exe) + "/token.toml"
+	opts.Token = filepath.Dir(exe) + "/config.toml"
 	return
 }
 
