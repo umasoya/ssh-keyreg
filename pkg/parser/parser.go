@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/user"
-	"path/filepath"
+	// "path/filepath"
 	"log"
 
 	flags "github.com/jessevdk/go-flags"
@@ -42,8 +42,9 @@ func setDefaults(opts *Options) {
 
 	// toml
 	if opts.Toml == "" {
-		exe,_ := os.Executable()
-		opts.Toml = filepath.Dir(exe) + "/config.toml"
+		opts.Toml = "/home/vagrant/Golang/src/github.com/yasuto777/ssh-keyreg/config.toml"
+		//exe,_ := os.Executable()
+		//opts.Toml = filepath.Dir(exe) + "/config.toml"
 	}
 
 	// key path
