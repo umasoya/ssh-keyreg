@@ -1,0 +1,9 @@
+## Requires that OAuth with at least `write:public_key scope.`
+[github]
+token = "your_api_token"
+label = "label"
+
+## Requires that Account name
+[bitbucket]
+user = "user name"
+label = "label"
